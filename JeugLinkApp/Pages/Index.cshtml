@@ -1,0 +1,88 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<header class="text-center my-5">
+    <h1 class="display-4">Welkom bij JeugdLink !</h1>
+    <p class="lead">text..........</p>
+</header>
+
+
+<body>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4">
+        @if (Model.AllCourses != null && Model.AllCourses.Any())
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                @foreach (var course in Model.AllCourses.Take(4))
+                {
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@course.course_title</h5>
+                                <p class="card-text">@course.course_description</p>
+                                <a asp-page="/CourseJoin" asp-route-courseId="@course.course_id" class="btn btn-primary">Inschrijven</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No Courses Available</p>
+        }
+    </div>
+
+</body>
+
+
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Reviews</h2>
+        <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card p-3 mx-2" style="width: 18rem;">
+                            <p>"Review1"</p>
+                            <footer class="blockquote-footer">John Doe, <cite title="Source Title">Software Engineer</cite></footer>
+                        </div>
+                        <div class="card p-3 mx-2" style="width: 18rem;">
+                            <p>"Review2"</p>
+                            <footer class="blockquote-footer">Jane Smith, <cite title="Source Title">Graphic Designer</cite></footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="card p-3 mx-2" style="width: 18rem;">
+                            <p>"Review2"</p>
+                            <footer class="blockquote-footer">Emily Johnson, <cite title="Source Title">Marketing Specialist</cite></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

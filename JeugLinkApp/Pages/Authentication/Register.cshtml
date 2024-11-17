@@ -1,0 +1,47 @@
+﻿
+@page
+@model JeugLinkApp.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<h2> Register</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+<form method="post">
+    <div class="form-group">
+        <label for="Firstname">Firstname</label>
+        <input type="text" id="Firstname" name="newuser.firstname" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Lastname">Lastname</label>
+        <input type="text" id="Lastname" name="newuser.lastname" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="text" id="Email" name="newuser.email" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" id="Password" name="newuser.password" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="DateOfBirth">DateOfBirth</label>
+        <input type="date" id="DateOfBirth" name="newuser.dateofbirth" class="form-control" required />
+    </div>
+    <div>
+        <button type="submit" class=" btn btn-primary">Register</button>
+    </div>
+</form>
